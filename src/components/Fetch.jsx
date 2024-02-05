@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react";
-import { options } from "./API_INFO";
 
 export default function FetchData(url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
+  const options = {
+    method: "GET",
+  };
+
   useEffect(() => {
-    fetch(`${url}`, options)
+    fetch(url, options)
       .then((response) => {
         if (response.status >= 400) {
-          throw new Error("Server Error");
+          throw new Error("server error");
         }
         return response.json();
       })
-      .then((response) => setData(response))
-      .catch((error) => setError(error))
+      .then((data) => setData(data))
+      .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
   }, []);
 

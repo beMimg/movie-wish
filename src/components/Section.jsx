@@ -7,7 +7,6 @@ export default function Section({ title, url }) {
   const { data, error, isLoading } = FetchData(url);
 
   const ref = useRef();
-  console.log(data);
 
   function handleButton(direction) {
     if (direction === "left") {
@@ -17,10 +16,6 @@ export default function Section({ title, url }) {
     if (direction === "right") {
       ref.current.scrollLeft = ref.current.scrollLeft + 500;
     }
-  }
-
-  if (isLoading) {
-    return <p>Loading..</p>;
   }
 
   return (
@@ -36,11 +31,12 @@ export default function Section({ title, url }) {
         />
         <div
           ref={ref}
-          className="scroll scrollbar-hide h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap"
+          className="scroll h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar-hide"
         >
+          {isLoading ? <p>Loading...</p> : error && "error"}
           {data &&
             !isLoading &&
-            data.results.map((movie) => (
+            data.map((movie) => (
               <img
                 key={movie.id}
                 className={`${title === "Trending" ? "w-[250px]" : "w-[150px]"}  inline-block cursor-pointer rounded-xl p-2 duration-300 ease-in-out hover:-translate-y-2`}

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import FetchData from "../components/Fetch";
 import Carousel from "../components/Caroussel";
 import Section from "../components/Section";
 import { API_INFO } from "../components/API_INFO";
@@ -9,9 +8,6 @@ export default function WelcomePage() {
   useEffect(() => {
     forYouRef.current.focus();
   }, []);
-
-  const newReleases = FetchData("https://api.themoviedb.org/3/movie/latest");
-  console.log(newReleases);
 
   return (
     <div className="bg-black p-6 text-white">
