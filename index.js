@@ -63,4 +63,19 @@ app.get("/action", (req, res) => {
     .catch((err) => console.error(err));
 });
 
+app.get("/list", (req, res) => {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: process.env.REACT_APP_API_KEY,
+    },
+  };
+
+  fetch("https://api.themoviedb.org/3/genre/movie/list", options)
+    .then((response) => response.json())
+    .then((data) => res.json(data))
+    .catch((err) => console.error(err));
+});
+
 app.listen(8000, () => console.log(`Server is running on port ${PORT}`));

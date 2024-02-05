@@ -33,7 +33,7 @@ export default function Section({ title, url }) {
           ref={ref}
           className="scroll h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar-hide"
         >
-          {isLoading ? <p>Loading...</p> : error && "error"}
+          {isLoading ? <p>Loading...</p> : error && <p>"Error..."</p>}
           {data &&
             !isLoading &&
             data.map((movie) => (

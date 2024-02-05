@@ -15,7 +15,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <WelcomePage /> },
       { path: "popular", element: <PopularPage /> },
-      { path: "categories", element: <CategoriesPage /> },
+      {
+        path: "categories",
+        element: <CategoriesPage />,
+        children: [{ path: ":id", element: <Genre /> }],
+      },
     ],
   },
 ]);
