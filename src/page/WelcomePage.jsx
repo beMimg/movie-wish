@@ -5,10 +5,6 @@ import Section from "../components/Section";
 import { API_INFO } from "../components/API_INFO";
 
 export default function WelcomePage() {
-  // const { data, error, isLoading } = FetchData(
-  //   "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-  // );
-
   const forYouRef = useRef();
   useEffect(() => {
     forYouRef.current.focus();

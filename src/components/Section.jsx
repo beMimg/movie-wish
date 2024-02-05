@@ -26,7 +26,7 @@ export default function Section({ title, url }) {
   return (
     <div className="pb-4">
       <div className="flex flex-row items-center justify-between">
-        <h2 className=" text-base font-bold">{title}</h2>
+        <h2 className="pl-2 text-base font-bold md:pl-8">{title}</h2>
         <h3 className="text-xs  text-gray-500">SEE ALL</h3>
       </div>
       <div className="relative flex items-center ">
@@ -43,7 +43,7 @@ export default function Section({ title, url }) {
             data.results.map((movie) => (
               <img
                 key={movie.id}
-                className=" inline-block w-[250px] cursor-pointer rounded-xl p-2 duration-300 ease-in-out hover:-translate-y-2"
+                className={`${title === "Trending" ? "w-[250px]" : "w-[150px]"}  inline-block cursor-pointer rounded-xl p-2 duration-300 ease-in-out hover:-translate-y-2`}
                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
               />
             ))}
