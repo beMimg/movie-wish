@@ -7,6 +7,7 @@ import RootLayout from "./layouts/RootLayout";
 import WelcomePage from "./page/WelcomePage";
 import PopularPage from "./page/PopularPage";
 import CategoriesPage from "./page/CategoriesPage";
+import Genre from "./page/Genre";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +19,8 @@ const router = createBrowserRouter([
       {
         path: "categories",
         element: <CategoriesPage />,
-        children: [{ path: ":id", element: <Genre /> }],
       },
+      { path: "/categories/:id", element: <Genre /> },
     ],
   },
 ]);
