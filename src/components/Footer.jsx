@@ -1,11 +1,13 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="bg-gray-950">
-      <div className="relative mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 lg:pt-24">
+      <div className="relative mx-auto max-w-screen-xl px-4 py-4 sm:px-6 lg:px-8 lg:pt-24">
         <div className="absolute end-4 top-4 sm:end-6 sm:top-6 lg:end-8 lg:top-8">
-          <a
+          <Link
             className="inline-block rounded-full bg-teal-600 p-2 text-white shadow transition hover:bg-teal-500 sm:p-3 lg:p-4"
-            href="#MainContent"
+            to="/"
           >
             <span className="sr-only">Back to top</span>
 
@@ -21,7 +23,7 @@ export default function Footer() {
                 clipRule="evenodd"
               />
             </svg>
-          </a>
+          </Link>
         </div>
 
         <div className="lg:flex lg:items-end lg:justify-between">

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Carousel from "../components/Caroussel";
 import Section from "../components/Section";
-import { API_INFO } from "../components/API_INFO";
+import { API_INFO } from "../API_INFO";
 
 export default function WelcomePage() {
   const forYouRef = useRef();
