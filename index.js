@@ -4,10 +4,13 @@ import cors from "cors";
 import axios from "axios";
 import "dotenv/config";
 
-const genreIDS = [
-  28, 12, 16, 35, 80, 99, 18, 10751, 14, 36, 27, 10402, 9648, 10749, 878, 10770,
-  53, 10752, 37,
-];
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: process.env.REACT_APP_API_KEY,
+  },
+};
 
 const app = express();
 
@@ -18,14 +21,6 @@ app.get("/", (req, res) => {
 });
 
 app.get("/trending", (req, res) => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.REACT_APP_API_KEY,
-    },
-  };
-
   fetch(
     "https://api.themoviedb.org/3/trending/movie/day?language=en-US",
     options,
@@ -36,14 +31,6 @@ app.get("/trending", (req, res) => {
 });
 
 app.get("/popular", (req, res) => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.REACT_APP_API_KEY,
-    },
-  };
-
   fetch(
     "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
     options,
@@ -54,14 +41,6 @@ app.get("/popular", (req, res) => {
 });
 
 app.get("/action", (req, res) => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.REACT_APP_API_KEY,
-    },
-  };
-
   fetch("https://api.themoviedb.org/3/discover/movie?&with_genres=27", options)
     .then((response) => response.json())
     .then((data) => res.json(data.results))
@@ -69,14 +48,6 @@ app.get("/action", (req, res) => {
 });
 
 app.get("/list", (req, res) => {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.REACT_APP_API_KEY,
-    },
-  };
-
   fetch("https://api.themoviedb.org/3/genre/movie/list", options)
     .then((response) => response.json())
     .then((data) => res.json(data))
@@ -84,18 +55,27 @@ app.get("/list", (req, res) => {
     .catch((err) => console.error(err));
 });
 
-genreIDS.forEach((id) => getGenre(id));
+// GENRES
+async function fetchData() {
+  let genres;
+  const res = await fetch(
+    "https://api.themoviedb.org/3/genre/movie/list",
+    options,
+  );
+  genres = await res.json();
+  return genres;
+}
+
+async function main() {
+  let genresIDS = await fetchData();
+  console.log(genresIDS);
+  genresIDS.genres.map((genre) => getGenre(genre.id));
+}
+
+main();
 
 export function getGenre(id) {
   app.get(`/genre/${id}`, (req, res) => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization: process.env.REACT_APP_API_KEY,
-      },
-    };
-
     fetch(
       `https://api.themoviedb.org/3/discover/movie?&with_genres=${id}`,
       options,
