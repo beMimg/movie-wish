@@ -1,16 +1,16 @@
 export const API_INFO = [
   {
     title: "Trending",
-    url: "http://localhost:8000/trending",
+    url: "https://movies-app-demo-0guf.onrender.com/trending",
     id: 1,
   },
   {
     title: "Popular",
-    url: "http://localhost:8000/popular",
+    url: "https://movies-app-demo-0guf.onrender.com/popular",
     id: 2,
   },
   {
     title: "Action",
-    url: "http://localhost:8000/action",
+    url: "https://movies-app-demo-0guf.onrender.com/action",
   },
 ];
