@@ -3,12 +3,8 @@ import FetchData from "../components/Fetch";
 
 export default function CategoriesPage() {
   const { data, error, isLoading } = FetchData(
-    "https://movies-app-demo-0guf.onrender.com/list",
+    "https://api.themoviedb.org/3/genre/movie/list",
   );
-
-  if (data) {
-    console.log(data.genres);
-  }
 
   if (isLoading) return <p>Loading...</p>;
 
@@ -20,7 +16,7 @@ export default function CategoriesPage() {
         data.genres.map((genre) => {
           return (
             <Link
-              to={genre.id.toString()}
+              to={{ pathname: `/categories/${genre.id.toString()}/${1}` }}
               key={genre.id}
               className=" m-4 flex h-44 items-center justify-center rounded bg-red-700"
             >
