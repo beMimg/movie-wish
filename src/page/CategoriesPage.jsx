@@ -6,6 +6,7 @@ export default function CategoriesPage() {
     "https://api.themoviedb.org/3/genre/movie/list",
   );
 
+  console.log(data);
   if (isLoading) return <p>Loading...</p>;
 
   if (error) return <p>Error...</p>;

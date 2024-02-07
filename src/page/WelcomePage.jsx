@@ -2,8 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import Carousel from "../components/Caroussel";
 import Section from "../components/Section";
 import { API_INFO } from "../API_INFO";
+import FetchData from "../components/Fetch";
 
 export default function WelcomePage() {
+  const { data, error, isLoading } = FetchData(
+    "https://api.themoviedb.org/3/genre/movie/list",
+  );
+  console.log(data);
+
   const forYouRef = useRef();
   useEffect(() => {
     forYouRef.current.focus();
@@ -20,8 +26,18 @@ export default function WelcomePage() {
           title={category.title}
           url={category.url}
           key={category.id}
-        ></Section>
+          seeAll={false}
+        />
       ))}
+      {data &&
+        data.genres.map((movie) => (
+          <Section
+            title={movie.name}
+            url={`https://api.themoviedb.org/3/discover/movie?&with_genres=${movie.id}&page=1`}
+            seeAll={true}
+            id={movie.id}
+          />
+        ))}
     </div>
   );
 }

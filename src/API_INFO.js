@@ -20,9 +20,4 @@ export const API_INFO = [
     url: "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
     id: 2,
   },
-  {
-    title: "Action",
-    url: "https://api.themoviedb.org/3/discover/movie?&with_genres=27",
-    id: 3,
-  },
 ];

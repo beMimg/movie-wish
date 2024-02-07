@@ -3,8 +3,9 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa";
 import { useRef } from "react";
 import MovieContainer from "./MovieContainer";
+import { Link } from "react-router-dom";
 
-export default function Section({ title, url }) {
+export default function Section({ title, url, id, seeAll }) {
   const { data, error, isLoading } = FetchData(url);
 
   const ref = useRef();
@@ -23,7 +24,15 @@ export default function Section({ title, url }) {
     <div className="pb-4">
       <div className="flex flex-row items-center justify-between">
         <h2 className="pl-2 text-base font-bold md:pl-8">{title}</h2>
-        <h3 className="text-xs  text-gray-500">SEE ALL</h3>
+        {/* <h3 ">SEE ALL</h3> */}
+        {seeAll && (
+          <Link
+            to={{ pathname: `/categories/${id}/1` }}
+            className="text-xs  text-gray-500"
+          >
+            See All
+          </Link>
+        )}
       </div>
       <div className="relative flex items-center ">
         <FaChevronLeft
