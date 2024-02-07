@@ -24,13 +24,12 @@ export default function Section({ title, url, id, seeAll }) {
     <div className="pb-4">
       <div className="flex flex-row items-center justify-between">
         <h2 className="pl-2 text-base font-bold md:pl-8">{title}</h2>
-        {/* <h3 ">SEE ALL</h3> */}
         {seeAll && (
           <Link
             to={{ pathname: `/categories/${id}/1` }}
             className="text-xs  text-gray-500"
           >
-            See All
+            SEE ALL
           </Link>
         )}
       </div>
