@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
-import FetchData from "../components/Fetch";
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
 import { useEffect, useRef, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa6";
 import { OPTIONS } from "../API_INFO";
+import MovieContainer from "../components/MovieContainer";
 
 export default function Genre() {
   const [data, setData] = useState(null);
@@ -66,10 +66,11 @@ export default function Genre() {
         {data &&
           data.results.map((movie) => (
             <div key={movie.id} className="flex items-center justify-center">
-              <img
+              <MovieContainer movie={movie} />
+              {/* <img
                 className="inline-block w-[250px] cursor-pointer rounded-xl p-2 duration-300 ease-in-out hover:-translate-y-2"
                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              />
+              /> */}
             </div>
           ))}
       </div>

@@ -2,6 +2,7 @@ import FetchData from "./Fetch";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa";
 import { useRef } from "react";
+import MovieContainer from "./MovieContainer";
 
 export default function Section({ title, url }) {
   const { data, error, isLoading } = FetchData(url);
@@ -37,11 +38,7 @@ export default function Section({ title, url }) {
           {data &&
             !isLoading &&
             data.results.map((movie) => (
-              <img
-                key={movie.id}
-                className={`${title === "Trending" ? "w-[250px]" : "w-[150px]"}  inline-block cursor-pointer rounded-xl p-2 duration-300 ease-in-out hover:-translate-y-2`}
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              />
+              <MovieContainer key={movie.id} title={title} movie={movie} />
             ))}
         </div>
         <FaChevronRight
