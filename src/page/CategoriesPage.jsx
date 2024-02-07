@@ -51,10 +51,21 @@ export default function CategoriesPage() {
     }
   }
 
-  const color = console.log(data);
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-black text-white">
+        <p>Loading...</p>
+      </div>
+    );
+  }
 
-  if (error) return <p>Error...</p>;
+  if (error) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-black text-white">
+        <p>Error...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="grid grid-cols-2 bg-black lg:grid-cols-4 xl:grid-cols-5  ">

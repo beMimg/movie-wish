@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FaChevronRight } from "react-icons/fa";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa6";
 import { OPTIONS } from "../API_INFO";
 import MovieContainer from "../components/MovieContainer";
@@ -10,7 +10,23 @@ export default function Genre() {
   const [data, setData] = useState(null);
   const [error, setError] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [genres, setGenres] = useState();
   let { id, page } = useParams();
+  const [genreName, setGenreName] = useState();
+
+  useMemo(async () => {
+    return fetch("https://api.themoviedb.org/3/genre/movie/list")
+      .then((res) => res.json())
+      .then((data) => setGenres(data))
+      .catch((err) => console.log(err))
+      .finally(() => console.log("h"));
+  }, []);
+
+  let genre;
+  if (genres) {
+    genre = genres.genres.filter((genre) => genre.id === parseInt(id));
+    console.log(genre.name);
+  }
 
   useEffect(() => {
     fetch(
@@ -53,26 +69,38 @@ export default function Genre() {
 
   return (
     <>
-      <div className="flex flex-row items-center justify-center bg-black text-white">
-        <Link to={{ pathname: `/categories/${id}/${previousPage}` }}>
-          <FaChevronLeft />
-        </Link>
-        <p>{data.page}</p>
-        <Link to={{ pathname: `/categories/${id}/${nextPage}` }}>
-          <FaChevronRight />
-        </Link>
+      <div className="relative flex flex-row justify-between bg-black text-white">
+        {genres && (
+          <h1 className=" xl pl-7 text-4xl font-extrabold lg:pl-12 2xl:pl-20 2xl:text-6xl">
+            {genre[0].name}
+          </h1>
+        )}
+        <div className="flex flex-row items-center justify-center  pr-3 xl:hidden ">
+          <Link to={{ pathname: `/categories/${id}/${previousPage}` }}>
+            <FaChevronLeft />
+          </Link>
+          <p className="pb-1">{data.page}</p>
+          <Link to={{ pathname: `/categories/${id}/${nextPage}` }}>
+            <FaChevronRight />
+          </Link>
+        </div>
       </div>
       <div className="grid grid-cols-2 items-center justify-center bg-black p-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
         {data &&
           data.results.map((movie) => (
             <div key={movie.id} className="flex items-center justify-center">
-              <MovieContainer movie={movie} />
-              {/* <img
-                className="inline-block w-[250px] cursor-pointer rounded-xl p-2 duration-300 ease-in-out hover:-translate-y-2"
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-              /> */}
+              <MovieContainer movie={movie} title="Trending" />
             </div>
           ))}
+      </div>
+      <div className="flex flex-row items-center justify-center bg-black pb-6 text-white">
+        <Link to={{ pathname: `/categories/${id}/${previousPage}` }}>
+          <FaChevronLeft />
+        </Link>
+        <p className="pb-1">{data.page}</p>
+        <Link to={{ pathname: `/categories/${id}/${nextPage}` }}>
+          <FaChevronRight />
+        </Link>
       </div>
     </>
   );
