@@ -8,7 +8,8 @@ import { IoExtensionPuzzle } from "react-icons/io5";
 export default function NavegationLinks({ open, setOpen }) {
   const activeLink =
     "flex items-center justify-center gap-2 p-4 pl-16 md:pl-0 md:text-yellow-300 text-2xl ";
-  const normalLink = "flex items-center gap-2 p-4 md:text-xl";
+  const normalLink =
+    "flex items-center gap-2 p-4 md:text-xl hover:text-yellow-100 transition-all";
   return (
     <>
       <NavLink

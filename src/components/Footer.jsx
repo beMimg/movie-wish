@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { MdLocalMovies } from "react-icons/md";
+import Title from "./Title";
 
 export default function Footer() {
   return (
@@ -20,8 +21,8 @@ export default function Footer() {
 
         <div className="lg:flex lg:items-end lg:justify-between">
           <div>
-            <div className="flex justify-center text-yellow-600 lg:justify-start">
-              <h1 className="font-extrabold">CineWish</h1>
+            <div className="flex justify-center text-white lg:justify-start">
+              <Title />
             </div>
 
             <p className="mx-auto mt-6 max-w-md text-center text-base leading-relaxed text-gray-500 lg:text-left">
@@ -34,13 +35,19 @@ export default function Footer() {
             <li></li>
 
             <li>
-              <Link to="/" className="text-gray-500 hover:text-yellow-300 ">
+              <Link
+                to="/"
+                className="text-gray-500 transition-all hover:scale-105 hover:text-yellow-300"
+              >
                 Home
               </Link>
             </li>
 
             <li>
-              <Link to="/" className="text-gray-500 hover:text-yellow-300 ">
+              <Link
+                to="/"
+                className="text-gray-500 transition-all hover:scale-105 hover:text-yellow-300"
+              >
                 About us
               </Link>
             </li>

@@ -27,7 +27,7 @@ export default function Section({ title, url, id, seeAll }) {
         {seeAll && (
           <Link
             to={{ pathname: `/categories/${id}/1` }}
-            className="text-xs  text-gray-500"
+            className="text-xs  text-gray-500 transition-all hover:text-white"
           >
             SEE ALL
           </Link>
@@ -35,7 +35,7 @@ export default function Section({ title, url, id, seeAll }) {
       </div>
       <div className="relative flex items-center ">
         <FaChevronLeft
-          className=" hidden h-32 cursor-pointer opacity-40 md:flex"
+          className=" hidden h-32 cursor-pointer opacity-40 transition-all hover:scale-110 hover:opacity-100 md:flex"
           onClick={() => handleButton("left")}
         />
         <div
@@ -50,7 +50,7 @@ export default function Section({ title, url, id, seeAll }) {
             ))}
         </div>
         <FaChevronRight
-          className=" hidden h-32 cursor-pointer opacity-40 md:flex"
+          className=" hidden h-32 cursor-pointer opacity-40 transition-all hover:scale-110 hover:opacity-100 md:flex md:flex"
           onClick={() => handleButton("right")}
         />
       </div>
