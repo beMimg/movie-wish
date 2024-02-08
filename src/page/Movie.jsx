@@ -56,11 +56,11 @@ export default function Movie() {
             </div>
           </div>
 
-          <div className="flex flex-col bg-black p-6 pt-[80px] text-base text-white">
+          <div className="flex flex-col gap-4 bg-black p-6 pt-[80px] text-base text-white">
             <p className=" opacity-80">
               {data.genres.map((genre) => `${genre.name} / `)}
             </p>
-            <p className="mt-4">{data.overview}</p>
+            <p>{data.overview}</p>
             {videoData && (
               <div className="flex w-full items-center justify-center">
                 <ReactPlayer
@@ -70,7 +70,6 @@ export default function Movie() {
                 ></ReactPlayer>
               </div>
             )}
-
             <div>
               <p className=" opacity-80">Productions:</p>
               {data.production_companies.map((prod) => (
