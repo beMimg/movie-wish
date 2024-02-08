@@ -34,10 +34,10 @@ export default function Movie() {
             <img
               src={`https://image.tmdb.org/t/p/original${data.backdrop_path}`}
               alt=""
-              className="flex h-[400px] object-cover object-center"
+              className="flex max-h-[700px] min-h-[400px] w-full object-cover object-top lg:object-center"
             />
             <div className="z-15 absolute -bottom-[80px] h-48 w-full  bg-black opacity-60"></div>
-            <div className="z-15 absolute -bottom-[70px] flex flex-row items-center gap-3 bg-transparent pl-7 text-white">
+            <div className="z-15 absolute -bottom-[85px] flex w-full flex-row items-center gap-3 bg-transparent pl-7 text-white xl:pl-[120px] 2xl:pl-[380px]">
               <img
                 src={`https://image.tmdb.org/t/p/original${data.poster_path}`}
                 className="h-[150px]"
@@ -49,32 +49,34 @@ export default function Movie() {
                 <p className="text-lg opacity-80">
                   {data.runtime} min - {data.release_date}
                 </p>
-                <p className="absolute -top-5 right-3 text-base font-bold">
+                <p className="absolute  -top-5 right-3 text-base font-bold text-yellow-300">
                   {data.vote_average}
                 </p>
               </div>
             </div>
           </div>
-
-          <div className="flex flex-col gap-4 bg-black p-6 pt-[80px] text-base text-white">
-            <p className=" opacity-80">
-              {data.genres.map((genre) => `${genre.name} / `)}
-            </p>
-            <p>{data.overview}</p>
-            {videoData && (
-              <div className="flex w-full items-center justify-center">
-                <ReactPlayer
-                  width="100%"
-                  controls={true}
-                  url={`https://www.youtube.com/watch?v=${videoData.results[trailerId].key}`}
-                ></ReactPlayer>
+          <div className="flex items-center justify-center bg-black">
+            <div className="flex flex-col gap-4 bg-black p-6 pt-[120px] text-base text-white   lg:gap-20 lg:pb-20 xl:w-[1200px]">
+              <p className=" opacity-80">
+                {data.genres.map((genre) => `${genre.name} / `)}
+              </p>
+              <p>{data.overview}</p>
+              {videoData && (
+                <div className="flex h-[400px] w-full items-center justify-center self-center xl:h-[720px] xl:w-[1280px]">
+                  <ReactPlayer
+                    width="100%"
+                    height="100%"
+                    controls={true}
+                    url={`https://www.youtube.com/watch?v=${videoData.results[trailerId].key}`}
+                  ></ReactPlayer>
+                </div>
+              )}
+              <div>
+                <p className=" lg: opacity-80">Productions:</p>
+                {data.production_companies.map((prod) => (
+                  <li className="text-base ">{prod.name}</li>
+                ))}
               </div>
-            )}
-            <div>
-              <p className=" opacity-80">Productions:</p>
-              {data.production_companies.map((prod) => (
-                <li className="text-base ">{prod.name}</li>
-              ))}
             </div>
           </div>
         </div>
