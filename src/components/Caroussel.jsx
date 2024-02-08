@@ -1,7 +1,7 @@
 import { Carousel } from "flowbite-react";
-import actionMovieImg from "../../public/action-movie.jpeg";
-import godFatherImg from "../../public/godfather.jpg";
-import jokerImg from "../../public/joker.jpg";
+import actionMovieImg from "../assets/action-movie.jpeg";
+import godFatherImg from "../assets/godfather.jpg";
+import jokerImg from "../assets/joker.jpg";
 import { FaChevronRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
