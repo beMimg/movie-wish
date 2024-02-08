@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 export default function RootLayout() {
   const { wishList, setWishList } = useWishList();
 
-  console.log(wishList);
   return (
     <div className=" font-sans text-2xl">
       <Header></Header>

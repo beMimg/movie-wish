@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import FetchData from "../components/Fetch";
+import { useEffect, useState } from "react";
+import ReactPlayer from "react-player";
 
 export default function Movie() {
   let { name, id } = useParams();
@@ -7,13 +9,25 @@ export default function Movie() {
     `https://api.themoviedb.org/3/movie/${id}`,
   );
 
-  if (data) {
-    console.log(data);
+  const {
+    data: videoData,
+    error: videoDataError,
+    isLoading: videoDataIsLoading,
+  } = FetchData(`https://api.themoviedb.org/3/movie/${id}/videos`);
+
+  let trailerId;
+  if (videoData) {
+    if (videoData.results.length === 1) {
+      trailerId = videoData.results[0];
+    }
+    trailerId = videoData.results.findIndex(
+      (video) => video.type === "Trailer" && video.iso_639_1 === "en",
+    );
   }
 
+  console.log(data);
   return (
     <>
-      {/* <p>{id}</p> */}
       {data && (
         <div>
           <div className="relative">
@@ -42,11 +56,27 @@ export default function Movie() {
             </div>
           </div>
 
-          <div className="h-[600px] bg-black p-6 pt-[80px] text-white">
-            <p className="text-base opacity-80">
-              {data.genres.map((genre) => `${genre.name} `)}
+          <div className="flex flex-col bg-black p-6 pt-[80px] text-base text-white">
+            <p className=" opacity-80">
+              {data.genres.map((genre) => `${genre.name} / `)}
             </p>
-            <p className="mt-4 text-base">{data.overview}</p>
+            <p className="mt-4">{data.overview}</p>
+            {videoData && (
+              <div className="flex w-full items-center justify-center">
+                <ReactPlayer
+                  width="100%"
+                  controls={true}
+                  url={`https://www.youtube.com/watch?v=${videoData.results[trailerId].key}`}
+                ></ReactPlayer>
+              </div>
+            )}
+
+            <div>
+              <p className=" opacity-80">Productions:</p>
+              {data.production_companies.map((prod) => (
+                <li className="text-base ">{prod.name}</li>
+              ))}
+            </div>
           </div>
         </div>
       )}

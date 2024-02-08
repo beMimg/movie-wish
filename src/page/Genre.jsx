@@ -12,7 +12,6 @@ export default function Genre() {
   const [isLoading, setIsLoading] = useState(true);
   const [genres, setGenres] = useState();
   let { id, page } = useParams();
-  const [genreName, setGenreName] = useState();
 
   useMemo(async () => {
     return fetch("https://api.themoviedb.org/3/genre/movie/list")
@@ -25,7 +24,6 @@ export default function Genre() {
   let genre;
   if (genres) {
     genre = genres.genres.filter((genre) => genre.id === parseInt(id));
-    console.log(genre.name);
   }
 
   useEffect(() => {
