@@ -1,9 +1,10 @@
 import FetchData from "./Fetch";
-import { FaChevronLeft } from "react-icons/fa6";
-import { FaChevronRight } from "react-icons/fa";
+
 import { useRef } from "react";
-import MovieContainer from "./MovieContainer";
 import { Link } from "react-router-dom";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import MovieContainer from "./MovieContainer";
 
 export default function Section({ title, url, id, seeAll }) {
   const { data, error, isLoading } = FetchData(url);

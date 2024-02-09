@@ -9,6 +9,7 @@ import PopularPage from "./page/PopularPage";
 import CategoriesPage from "./page/CategoriesPage";
 import Genre from "./page/Genre";
 import Movie from "./page/Movie";
+import WishList from "./page/WishList";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         path: "/movie/:title/:id",
         element: <Movie />,
       },
+      { path: "wish_list", element: <WishList /> },
     ],
   },
 ]);

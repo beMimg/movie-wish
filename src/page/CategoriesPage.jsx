@@ -77,7 +77,7 @@ export default function CategoriesPage() {
               key={genre.id}
               className={`${getGenreBackgroundColor(genre.id)} m-4 flex h-44 items-center justify-center rounded bg-gradient-to-r from-gray-500 to-transparent  p-5 text-base backdrop-blur`}
             >
-              <p className="text-2xl font-bold">{genre.name}</p>
+              <p className="text-xl font-bold">{genre.name}</p>
             </Link>
           );
         })}

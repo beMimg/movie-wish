@@ -2,7 +2,6 @@ import { NavLink } from "react-router-dom";
 import { IoIosHeart } from "react-icons/io";
 import { TbCategoryFilled } from "react-icons/tb";
 import { IoIosHome } from "react-icons/io";
-import { IoIosInformation } from "react-icons/io";
 import { IoExtensionPuzzle } from "react-icons/io5";
 
 export default function NavegationLinks({ open, setOpen }) {

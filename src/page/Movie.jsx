@@ -3,12 +3,16 @@ import FetchData from "../components/Fetch";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import { IoIosHeart } from "react-icons/io";
+import { useWishList } from "../context/MovieContext";
+import { useAddMovieToWishList } from "../context/MovieContext";
 
 export default function Movie() {
   let { name, id } = useParams();
   const { data, error, isLoading } = FetchData(
     `https://api.themoviedb.org/3/movie/${id}`,
   );
+
+  const addMovieToWishList = useAddMovieToWishList();
 
   const {
     data: videoData,
@@ -61,7 +65,10 @@ export default function Movie() {
                 <p className=" opacity-80">
                   {data.genres.map((genre) => `${genre.name} / `)}
                 </p>
-                <button className="flex flex-row items-center justify-center gap-2 rounded border-2 border-yellow-300  bg-yellow-300  p-2 px-4 font-bold text-black transition-all hover:border-yellow-300 hover:bg-black hover:text-yellow-300">
+                <button
+                  onClick={() => addMovieToWishList(data.title, data.id)}
+                  className="flex flex-row items-center justify-center gap-2 rounded border-2 border-yellow-300  bg-yellow-300  p-2 px-4 font-bold text-black transition-all hover:border-yellow-300 hover:bg-black hover:text-yellow-300"
+                >
                   <IoIosHeart />
                   <p>Wish List</p>
                 </button>
