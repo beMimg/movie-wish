@@ -73,14 +73,14 @@ export default function Movie() {
                 </p>
                 {!movieIsInWishList ? (
                   <HandleWishListBtn
-                    title="Wish List"
+                    type="add"
                     handleClick={() =>
                       addMovieToWishList(data.title, data.id, data.poster_path)
                     }
                   />
                 ) : (
                   <HandleWishListBtn
-                    title="Remove from list"
+                    type="remove"
                     handleClick={() => removeMovieFromWishList(data.id)}
                   />
                 )}

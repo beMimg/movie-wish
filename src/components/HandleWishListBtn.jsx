@@ -1,19 +1,26 @@
 import { IoIosHeart } from "react-icons/io";
 import { IoIosHeartDislike } from "react-icons/io";
 
-export default function handleWishListBtn({ handleClick, title }) {
-  function getIcon() {
-    if (title === "Wish List") return <IoIosHeart />;
+export default function handleWishListBtn({ handleClick, type }) {
+  let title, icon, style;
 
-    if (title === "Remove from List") return <IoIosHeartDislike />;
+  if (type === "add") {
+    title = "Wish List";
+    icon = <IoIosHeart />;
+    style =
+      "border-yellow-300 bg-yellow-300 hover:border-yellow-300 hover:bg-black hover:text-yellow-300";
   }
-
-  let icon = getIcon(title);
+  if (type === "remove") {
+    title = "Remove from list";
+    icon = <IoIosHeartDislike />;
+    style =
+      "border-red-600 bg-red-600 hover:border-red-600 hover:bg-black hover:text-red-600";
+  }
 
   return (
     <button
       onClick={() => handleClick()}
-      className="flex flex-row items-center justify-center gap-2 rounded border-2 border-yellow-300  bg-yellow-300  p-2 px-4 font-bold text-black transition-all hover:border-yellow-300 hover:bg-black hover:text-yellow-300"
+      className={`${style} flex flex-row items-center justify-center gap-2 rounded border-2 p-2 px-4 transition-all hover:border-yellow-300 hover:bg-black `}
     >
       {icon}
       <p>{title}</p>
