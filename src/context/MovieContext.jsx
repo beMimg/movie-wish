@@ -17,7 +17,7 @@ export default function ContextProvider({ children }) {
   console.log(wishList);
   function addMovieToWishList(name, id, poster_path) {
     setWishList((prevList) => {
-      return [...prevList, { name: name, id: id, poster: poster_path }];
+      return [...prevList, { title: name, id: id, poster_path: poster_path }];
     });
   }
 

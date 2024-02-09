@@ -66,7 +66,9 @@ export default function Movie() {
                   {data.genres.map((genre) => `${genre.name} / `)}
                 </p>
                 <button
-                  onClick={() => addMovieToWishList(data.title, data.id)}
+                  onClick={() =>
+                    addMovieToWishList(data.title, data.id, data.poster_path)
+                  }
                   className="flex flex-row items-center justify-center gap-2 rounded border-2 border-yellow-300  bg-yellow-300  p-2 px-4 font-bold text-black transition-all hover:border-yellow-300 hover:bg-black hover:text-yellow-300"
                 >
                   <IoIosHeart />

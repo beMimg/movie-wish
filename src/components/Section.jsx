@@ -51,7 +51,7 @@ export default function Section({ title, url, id, seeAll }) {
             ))}
         </div>
         <FaChevronRight
-          className=" hidden h-32 cursor-pointer opacity-40 transition-all hover:scale-110 hover:opacity-100 md:flex md:flex"
+          className=" hidden h-32 cursor-pointer opacity-40 transition-all hover:scale-110 hover:opacity-100 md:flex "
           onClick={() => handleButton("right")}
         />
       </div>

@@ -5,7 +5,6 @@ import RootLayout from "./layouts/RootLayout";
 
 // Pages
 import WelcomePage from "./page/WelcomePage";
-import PopularPage from "./page/PopularPage";
 import CategoriesPage from "./page/CategoriesPage";
 import Genre from "./page/Genre";
 import Movie from "./page/Movie";
@@ -17,7 +16,6 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <WelcomePage /> },
-      { path: "popular", element: <PopularPage /> },
       {
         path: "categories",
         element: <CategoriesPage />,
