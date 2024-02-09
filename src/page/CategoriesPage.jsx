@@ -75,9 +75,9 @@ export default function CategoriesPage() {
             <Link
               to={{ pathname: `/categories/${genre.id.toString()}/${1}` }}
               key={genre.id}
-              className={`${getGenreBackgroundColor(genre.id)} m-4 flex h-44 items-center justify-center rounded bg-red-500 bg-gradient-to-r from-gray-500 to-transparent  p-5 text-base backdrop-blur`}
+              className={`${getGenreBackgroundColor(genre.id)} m-4 flex h-44 items-center justify-center rounded bg-gradient-to-r from-gray-500 to-transparent  p-5 text-base backdrop-blur`}
             >
-              <p>{genre.name}</p>
+              <p className="text-2xl font-bold">{genre.name}</p>
             </Link>
           );
         })}

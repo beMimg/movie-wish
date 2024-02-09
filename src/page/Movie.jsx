@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import FetchData from "../components/Fetch";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
+import { IoIosHeart } from "react-icons/io";
 
 export default function Movie() {
   let { name, id } = useParams();
@@ -25,7 +26,6 @@ export default function Movie() {
     );
   }
 
-  console.log(data);
   return (
     <>
       {data && (
@@ -57,9 +57,15 @@ export default function Movie() {
           </div>
           <div className="flex items-center justify-center bg-black">
             <div className="flex flex-col gap-4 bg-black p-6 pt-[120px] text-base text-white   lg:gap-20 lg:pb-20 xl:w-[1200px]">
-              <p className=" opacity-80">
-                {data.genres.map((genre) => `${genre.name} / `)}
-              </p>
+              <div className="flex flex-col items-center justify-between gap-4 md:flex-row ">
+                <p className=" opacity-80">
+                  {data.genres.map((genre) => `${genre.name} / `)}
+                </p>
+                <button className="flex flex-row items-center justify-center gap-2 rounded border-2 border-yellow-300  bg-yellow-300  p-2 px-4 font-bold text-black transition-all hover:border-yellow-300 hover:bg-black hover:text-yellow-300">
+                  <IoIosHeart />
+                  <p>Wish List</p>
+                </button>
+              </div>
               <p>{data.overview}</p>
               {videoData && (
                 <div className="flex h-[400px] w-full items-center justify-center self-center xl:h-[720px] xl:w-[1280px]">
@@ -74,7 +80,9 @@ export default function Movie() {
               <div>
                 <p className=" lg: opacity-80">Productions:</p>
                 {data.production_companies.map((prod) => (
-                  <li className="text-base ">{prod.name}</li>
+                  <li key={prod.name} className="text-base ">
+                    {prod.name}
+                  </li>
                 ))}
               </div>
             </div>
