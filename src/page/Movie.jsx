@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
 import FetchData from "../components/Fetch";
-import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
-import { IoIosHeart } from "react-icons/io";
 import { useWishList } from "../context/MovieContext";
-import { useAddMovieToWishList } from "../context/MovieContext";
+import { useHandleWishListBtns } from "../context/MovieContext";
+import HandleWishListBtn from "../components/HandleWishListBtn";
 
 export default function Movie() {
   let { name, id } = useParams();
@@ -12,7 +11,9 @@ export default function Movie() {
     `https://api.themoviedb.org/3/movie/${id}`,
   );
 
-  const addMovieToWishList = useAddMovieToWishList();
+  const { addMovieToWishList, removeMovieFromWishList } =
+    useHandleWishListBtns();
+  const { wishList, setWishList } = useWishList();
 
   const {
     data: videoData,
@@ -29,6 +30,11 @@ export default function Movie() {
       (video) => video.type === "Trailer" && video.iso_639_1 === "en",
     );
   }
+
+  let movieIsInWishList =
+    data?.id && wishList.some((movie) => movie.id === data.id);
+
+  console.log(movieIsInWishList);
 
   return (
     <>
@@ -65,15 +71,19 @@ export default function Movie() {
                 <p className=" opacity-80">
                   {data.genres.map((genre) => `${genre.name} / `)}
                 </p>
-                <button
-                  onClick={() =>
-                    addMovieToWishList(data.title, data.id, data.poster_path)
-                  }
-                  className="flex flex-row items-center justify-center gap-2 rounded border-2 border-yellow-300  bg-yellow-300  p-2 px-4 font-bold text-black transition-all hover:border-yellow-300 hover:bg-black hover:text-yellow-300"
-                >
-                  <IoIosHeart />
-                  <p>Wish List</p>
-                </button>
+                {!movieIsInWishList ? (
+                  <HandleWishListBtn
+                    title="Wish List"
+                    handleClick={() =>
+                      addMovieToWishList(data.title, data.id, data.poster_path)
+                    }
+                  />
+                ) : (
+                  <HandleWishListBtn
+                    title="Remove from list"
+                    handleClick={() => removeMovieFromWishList(data.id)}
+                  />
+                )}
               </div>
               <p>{data.overview}</p>
               {videoData && (

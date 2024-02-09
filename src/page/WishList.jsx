@@ -1,8 +1,24 @@
 import { Link } from "react-router-dom";
 import { useWishList } from "../context/MovieContext";
+import MovieContainer from "../components/MovieContainer";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import { useRef } from "react";
 
 export default function WishList() {
   const { wishList, setWishList } = useWishList();
+
+  const ref = useRef();
+
+  function handleButton(direction) {
+    if (direction === "left") {
+      console.log("left");
+      ref.current.scrollLeft = ref.current.scrollLeft - 500;
+    }
+    if (direction === "right") {
+      ref.current.scrollLeft = ref.current.scrollLeft + 500;
+    }
+  }
 
   return (
     <div className="relative min-h-[550px] bg-black text-white">
@@ -25,6 +41,31 @@ export default function WishList() {
             Let your movie choice be a personal exploration, a reflection of
             your emotions, and a source of comfort on quiet evenings.
           </p>
+        </div>
+      )}
+      {wishList.length > 0 && (
+        <div className="absolute flex h-full w-full items-center justify-center">
+          <h1 className="absolute left-0 top-0 p-4 font-extrabold">
+            Wish List
+          </h1>
+          <div className="relative flex items-center ">
+            <FaChevronLeft
+              className=" hidden h-32 cursor-pointer opacity-40 transition-all hover:scale-110 hover:opacity-100 md:flex"
+              onClick={() => handleButton("left")}
+            />
+            <div
+              ref={ref}
+              className="scroll h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar-hide"
+            >
+              {wishList.map((movie) => (
+                <MovieContainer key={movie.id} title="Trending" movie={movie} />
+              ))}
+            </div>
+            <FaChevronRight
+              className=" hidden h-32 cursor-pointer opacity-40 transition-all hover:scale-110 hover:opacity-100 md:flex "
+              onClick={() => handleButton("right")}
+            />
+          </div>
         </div>
       )}
     </div>
