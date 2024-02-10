@@ -1,8 +1,37 @@
-# React + Vite
+# MovieWish
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to MovieWish, a web app that allows users to search for movies, view movie details, watch trailers, and add them to a wish list.
 
-Currently, two official plugins are available:
+## Introduction
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Live Preview**
+Open your web browser and go to [live preview](https://friendly-starburst-6e15fd.netlify.app/) to access **MovieWish**.
+
+## Features
+
+- Search for movies
+- View movie details
+- Watch movie trailers
+- Add movies to a wish list
+- Search for movies by category
+
+## API's used
+
+[tmdb database api](https://developer.themoviedb.org/reference/intro/getting-started)
+
+## Technologies Used
+
+**MovieWish** is built using the following technologies:
+
+- **React:** A JavaScript library for building user interfaces.
+- **Tailwind CSS:** A utility-first CSS framework for quickly styling your applications.
+- **Netlify:** A platform for continuous deployment and hosting.
+- **Vitest:** A fast and minimal JavaScript test runner for Vite.
+
+## Contributing
+
+Contributions are welcome! If you have any ideas for improvement, open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
