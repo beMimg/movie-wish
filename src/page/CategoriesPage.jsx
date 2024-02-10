@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import FetchData from "../components/Fetch";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function CategoriesPage() {
   const { data, error, isLoading } = FetchData(
@@ -54,7 +55,7 @@ export default function CategoriesPage() {
   if (isLoading) {
     return (
       <div className="flex h-screen items-center justify-center bg-black text-white">
-        <p>Loading...</p>
+        <LoadingSpinner />
       </div>
     );
   }
@@ -62,7 +63,9 @@ export default function CategoriesPage() {
   if (error) {
     return (
       <div className="flex h-screen items-center justify-center bg-black text-white">
-        <p>Error...</p>
+        <p className="text-center">
+          We apolagize, unfortnately the server is down at the moment...
+        </p>
       </div>
     );
   }

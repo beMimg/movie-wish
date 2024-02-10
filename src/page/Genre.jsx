@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa6";
 import { OPTIONS } from "../API_INFO";
 import MovieContainer from "../components/MovieContainer";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Genre() {
   const [data, setData] = useState(null);
@@ -18,7 +19,7 @@ export default function Genre() {
       .then((res) => res.json())
       .then((data) => setGenres(data))
       .catch((err) => console.log(err))
-      .finally(() => console.log("h"));
+      .finally(() => setIsLoading(false));
   }, []);
 
   let genre;
@@ -44,8 +45,8 @@ export default function Genre() {
 
   if (isLoading) {
     return (
-      <div className="h-screen">
-        <p>Loading...</p>
+      <div className="flex h-screen items-center justify-center bg-black text-white">
+        <LoadingSpinner />
       </div>
     );
   }
@@ -77,7 +78,8 @@ export default function Genre() {
           <Link to={{ pathname: `/categories/${id}/${previousPage}` }}>
             <FaChevronLeft />
           </Link>
-          <p className="pb-1">{data.page}</p>
+          {data && <p className="pb-1">{data.page}</p>}
+
           <Link to={{ pathname: `/categories/${id}/${nextPage}` }}>
             <FaChevronRight />
           </Link>
@@ -95,7 +97,8 @@ export default function Genre() {
         <Link to={{ pathname: `/categories/${id}/${previousPage}` }}>
           <FaChevronLeft />
         </Link>
-        <p className="pb-1">{data.page}</p>
+        {data && <p className="pb-1">{data.page}</p>}
+
         <Link to={{ pathname: `/categories/${id}/${nextPage}` }}>
           <FaChevronRight />
         </Link>

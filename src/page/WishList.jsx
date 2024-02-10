@@ -46,7 +46,7 @@ export default function WishList() {
       {wishList.length > 0 && (
         <div className="absolute flex h-full w-full items-center justify-center">
           <h1 className="absolute left-0 top-0 p-4 font-extrabold">
-            Wish List
+            Wish List - {wishList.length}
           </h1>
           <div className="relative flex items-center ">
             <FaChevronLeft

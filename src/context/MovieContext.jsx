@@ -15,8 +15,6 @@ export function useHandleWishListBtns() {
 export default function ContextProvider({ children }) {
   const [wishList, setWishList] = useState([]);
 
-  console.log(wishList);
-
   function addMovieToWishList(name, id, poster_path) {
     setWishList((prevList) => {
       return [...prevList, { title: name, id: id, poster_path: poster_path }];
