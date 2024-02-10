@@ -31,6 +31,7 @@ export default function Section({ title, url, id, seeAll }) {
         <h2 className="pl-2 text-base font-bold md:pl-8">{title}</h2>
         {seeAll && (
           <Link
+            to={{ pathname: `/categories/${id}/1` }}
             onClick={() => {
               window.scroll({
                 top: 0,
@@ -38,7 +39,6 @@ export default function Section({ title, url, id, seeAll }) {
                 behavior: "smooth",
               });
             }}
-            to={{ pathname: `/categories/${id}/1` }}
             className="text-xs  text-gray-500 transition-all hover:text-white"
           >
             SEE ALL
