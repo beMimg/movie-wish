@@ -21,6 +21,10 @@ export default function Section({ title, url, id, seeAll }) {
     }
   }
 
+  if (error) {
+    return <div></div>;
+  }
+
   return (
     <div className="pb-4">
       <div className="flex flex-row items-center justify-between">
@@ -43,12 +47,10 @@ export default function Section({ title, url, id, seeAll }) {
           ref={ref}
           className="scroll h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar-hide"
         >
-          {isLoading ? (
+          {isLoading && (
             <div className="flex w-full items-center justify-center p-4">
               <LoadingSpinner />
             </div>
-          ) : (
-            error && <p>"Error..."</p>
           )}
           {data &&
             !isLoading &&
