@@ -32,6 +32,13 @@ export default function RouteLink({ open, setOpen, title, path }) {
   return (
     <NavLink
       to={path}
+      onClick={() => {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      }}
       className={({ isActive }) => (isActive ? activeLink : normalLink)}
     >
       {open ? (

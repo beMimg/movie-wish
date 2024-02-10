@@ -38,6 +38,13 @@ export default function Footer() {
               <Link
                 to="/"
                 className="text-gray-500 transition-all hover:scale-105 hover:text-yellow-300"
+                onClick={() => {
+                  window.scroll({
+                    top: 0,
+                    left: 0,
+                    behavior: "smooth",
+                  });
+                }}
               >
                 Home
               </Link>

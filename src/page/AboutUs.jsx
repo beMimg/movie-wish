@@ -3,7 +3,11 @@ export default function AboutUs() {
     <div className="flex min-h-[550px] flex-col gap-10 bg-black p-6 text-base text-white">
       <p className="">
         Hi, my name is{" "}
-        <a className="text-blue-600" href="https://github.com/beMimg">
+        <a
+          className="text-blue-600"
+          target="a_blank"
+          href="https://github.com/beMimg"
+        >
           Bernardo Guerreiro - beMimg
         </a>
       </p>

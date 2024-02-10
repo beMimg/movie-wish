@@ -19,7 +19,7 @@ export default function Header() {
       <div className="hidden w-full justify-evenly text-white md:flex">
         <NavegationLinks />
       </div>
-      <IoIosSearch />
+      <p></p>
       {open && <Menu setOpen={setOpen} open={open} />}
     </header>
   );
