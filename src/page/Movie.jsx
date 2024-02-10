@@ -31,10 +31,9 @@ export default function Movie() {
     );
   }
 
+  console.log(videoData);
   let movieIsInWishList =
     data?.id && wishList.some((movie) => movie.id === data.id);
-
-  console.log(movieIsInWishList);
 
   return (
     <>
@@ -86,7 +85,7 @@ export default function Movie() {
                 )}
               </div>
               <p>{data.overview}</p>
-              {videoData && (
+              {videoData.results.length > 0 ? (
                 <div className="flex h-[400px] w-full items-center justify-center self-center xl:h-[720px] xl:w-[1280px]">
                   <ReactPlayer
                     width="100%"
@@ -95,6 +94,11 @@ export default function Movie() {
                     url={`https://www.youtube.com/watch?v=${videoData.results[trailerId].key}`}
                   ></ReactPlayer>
                 </div>
+              ) : (
+                <p>
+                  We apologize, but unfortunately, we are unable to provide a
+                  trailer for this movie at the moment.
+                </p>
               )}
               <div>
                 <p className=" lg: opacity-80">Productions:</p>
