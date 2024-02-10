@@ -4,6 +4,7 @@ import ReactPlayer from "react-player";
 import { useWishList } from "../context/MovieContext";
 import { useHandleWishListBtns } from "../context/MovieContext";
 import HandleWishListBtn from "../components/HandleWishListBtn";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 export default function Movie() {
   let { name, id } = useParams();
@@ -31,9 +32,16 @@ export default function Movie() {
     );
   }
 
-  console.log(videoData);
   let movieIsInWishList =
     data?.id && wishList.some((movie) => movie.id === data.id);
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[600px] items-center justify-center bg-black">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -85,7 +93,7 @@ export default function Movie() {
                 )}
               </div>
               <p>{data.overview}</p>
-              {videoData.results.length > 0 ? (
+              {videoData && videoData.results.length > 0 ? (
                 <div className="flex h-[400px] w-full items-center justify-center self-center xl:h-[720px] xl:w-[1280px]">
                   <ReactPlayer
                     width="100%"

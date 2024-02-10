@@ -1,10 +1,10 @@
 import FetchData from "./Fetch";
-
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import MovieContainer from "./MovieContainer";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function Section({ title, url, id, seeAll }) {
   const { data, error, isLoading } = FetchData(url);
@@ -43,7 +43,13 @@ export default function Section({ title, url, id, seeAll }) {
           ref={ref}
           className="scroll h-full w-full overflow-x-scroll scroll-smooth whitespace-nowrap scrollbar-hide"
         >
-          {isLoading ? <p>Loading...</p> : error && <p>"Error..."</p>}
+          {isLoading ? (
+            <div className="flex w-full items-center justify-center p-4">
+              <LoadingSpinner />
+            </div>
+          ) : (
+            error && <p>"Error..."</p>
+          )}
           {data &&
             !isLoading &&
             data.results.map((movie) => (
