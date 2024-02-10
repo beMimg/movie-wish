@@ -14,7 +14,6 @@ export default function WelcomePage() {
     forYouRef.current.focus();
   }, []);
 
-  useEffect(() => {}, []);
   return (
     <div className="bg-black p-6 text-white">
       <button

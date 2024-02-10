@@ -13,6 +13,13 @@ export default function MovieContainer({ movie, title }) {
       to={{
         pathname: `/movie/${stringWithUnderscores}/${movie.id.toString()}`,
       }}
+      onClick={() => {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
+      }}
     >
       <img
         className={`${title === "Trending" ? "w-[250px]" : "w-[150px]"}  inline-block cursor-pointer rounded-xl p-2 transition-all duration-300 ease-in-out hover:-translate-y-2`}
