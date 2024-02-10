@@ -20,7 +20,7 @@ export default function CarouselComponent() {
               All your the movies you wished for
             </p>
             <h1 className="pl-2 text-lg">Welcome to CineWish</h1>
-            <Link to="/" className="pl-5 font-thin">
+            <Link to="about_us" className="pl-5 font-thin">
               Learn more
             </Link>
           </div>
@@ -36,7 +36,7 @@ export default function CarouselComponent() {
               Redeem your codes and get movies for free
             </p>
             <h1 className="pl-2 text-lg">More information</h1>
-            <Link to="/" className="pl-5 font-thin">
+            <Link to="about_us" className="pl-5 font-thin">
               Register
             </Link>
           </div>
@@ -52,8 +52,8 @@ export default function CarouselComponent() {
               Add to your wish list
             </p>
             <h1 className="pl-2 text-lg">Like the movie</h1>
-            <Link to="/" className="pl-5 font-thin">
-              Go to wish list
+            <Link to="about_us" className="pl-5 ">
+              Wish list
             </Link>
           </div>
         </div>
