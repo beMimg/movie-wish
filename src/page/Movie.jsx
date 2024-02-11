@@ -43,6 +43,16 @@ export default function Movie() {
     );
   }
 
+  if (error) {
+    return (
+      <div className="flex h-[600px] items-center justify-center bg-black text-white">
+        <p className="text-center">
+          We apolagize, unfortnately this movie doesn't exist.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <>
       {data && (

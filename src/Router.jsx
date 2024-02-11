@@ -10,11 +10,13 @@ import Genre from "./page/Genre";
 import Movie from "./page/Movie";
 import WishList from "./page/WishList";
 import AboutUs from "./page/AboutUs";
+import NotFound from "./page/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <NotFound />,
     children: [
       { index: true, element: <WelcomePage /> },
       {

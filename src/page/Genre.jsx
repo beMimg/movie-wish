@@ -64,7 +64,15 @@ export default function Genre() {
     previousPage = 1;
   }
 
-  if (error) return <p>Error...</p>;
+  if (error) {
+    return (
+      <div className="flex h-[600px] items-center justify-center bg-black text-white">
+        <p className="text-center">
+          We apolagize, unfortnately this page doesn't exist.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <>
