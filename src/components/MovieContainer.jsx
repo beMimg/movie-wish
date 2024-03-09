@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom";
 
 export default function MovieContainer({ movie, title }) {
-  let stringWithoutColonAndQuestion = movie.title.replace(/[?:]/g, "");
+  let stringWithoutSpecialChars = movie.title.replace(/[?:#]/g, "");
 
-  let stringWithUnderscores = stringWithoutColonAndQuestion.replace(
-    /\s+/g,
-    "_",
-  );
+  let stringWithUnderscores = stringWithoutSpecialChars.replace(/\s+/g, "_");
 
   return (
     <Link
