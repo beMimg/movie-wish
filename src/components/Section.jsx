@@ -26,7 +26,7 @@ export default function Section({ title, url, id, seeAll }) {
   }
   useEffect(() => {
     if (data) {
-      const smallerArray = data.results.splice(0, 13);
+      const smallerArray = data.results.splice(0, 15);
       setSmallerData(smallerArray);
     }
   }, [data]);
@@ -45,7 +45,7 @@ export default function Section({ title, url, id, seeAll }) {
                 behavior: "smooth",
               });
             }}
-            className="text-xs  text-gray-500 transition-all hover:text-white"
+            className="hoved:text-white  text-xs text-gray-500 transition-all"
           >
             SEE ALL
           </Link>
@@ -71,6 +71,7 @@ export default function Section({ title, url, id, seeAll }) {
               <MovieContainer key={movie.id} title={title} movie={movie} />
             ))}
         </div>
+
         <FaChevronRight
           className=" hidden h-32 cursor-pointer opacity-40 transition-all hover:scale-110 hover:opacity-100 md:flex "
           onClick={() => handleButton("right")}
