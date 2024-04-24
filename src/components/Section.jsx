@@ -1,5 +1,5 @@
 import FetchData from "./Fetch";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
@@ -7,8 +7,8 @@ import MovieContainer from "./MovieContainer";
 import LoadingSpinner from "./LoadingSpinner";
 
 export default function Section({ title, url, id, seeAll }) {
+  const [smallerData, setSmallerData] = useState();
   const { data, error, isLoading } = FetchData(url);
-
   const ref = useRef();
 
   function handleButton(direction) {
@@ -24,6 +24,12 @@ export default function Section({ title, url, id, seeAll }) {
   if (error) {
     return <div></div>;
   }
+  useEffect(() => {
+    if (data) {
+      const smallerArray = data.results.splice(0, 13);
+      setSmallerData(smallerArray);
+    }
+  }, [data]);
 
   return (
     <div className="pb-4">
@@ -59,9 +65,9 @@ export default function Section({ title, url, id, seeAll }) {
               <LoadingSpinner />
             </div>
           )}
-          {data &&
+          {smallerData &&
             !isLoading &&
-            data.results.map((movie) => (
+            smallerData.map((movie) => (
               <MovieContainer key={movie.id} title={title} movie={movie} />
             ))}
         </div>

@@ -32,15 +32,17 @@ export default function WelcomePage() {
         />
       ))}
       {data &&
-        data.genres.map((movie) => (
-          <Section
-            key={movie.id}
-            title={movie.name}
-            url={`https://api.themoviedb.org/3/discover/movie?&with_genres=${movie.id}&page=1`}
-            seeAll={true}
-            id={movie.id}
-          />
-        ))}
+        data.genres
+          .splice(0, 10)
+          .map((movie) => (
+            <Section
+              key={movie.id}
+              title={movie.name}
+              url={`https://api.themoviedb.org/3/discover/movie?&with_genres=${movie.id}&page=1`}
+              seeAll={true}
+              id={movie.id}
+            />
+          ))}
     </div>
   );
 }
