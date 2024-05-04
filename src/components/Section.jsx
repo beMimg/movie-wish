@@ -13,7 +13,6 @@ export default function Section({ title, url, id, seeAll }) {
 
   function handleButton(direction) {
     if (direction === "left") {
-      console.log("left");
       ref.current.scrollLeft = ref.current.scrollLeft - 500;
     }
     if (direction === "right") {

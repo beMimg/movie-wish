@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function MovieContainer({ movie, title }) {
-  console.log(movie);
   let stringWithoutSpecialChars = movie.title.replace(/[?:#]/g, "");
 
   let stringWithUnderscores = stringWithoutSpecialChars.replace(/\s+/g, "_");

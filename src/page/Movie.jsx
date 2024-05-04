@@ -23,6 +23,7 @@ export default function Movie() {
   } = FetchData(`https://api.themoviedb.org/3/movie/${id}/videos`);
 
   let trailerId;
+
   if (videoData) {
     if (videoData.results.length === 1) {
       trailerId = videoData.results[0];

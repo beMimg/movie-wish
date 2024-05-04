@@ -18,7 +18,7 @@ export default function Genre() {
     return fetch("https://api.themoviedb.org/3/genre/movie/list")
       .then((res) => res.json())
       .then((data) => setGenres(data))
-      .catch((err) => console.log(err))
+      .catch((err) => setError("Ups, something went wrong!"))
       .finally(() => setIsLoading(false));
   }, []);
 
