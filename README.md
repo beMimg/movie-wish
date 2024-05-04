@@ -31,12 +31,7 @@ Open your web browser and go to [live preview](https://friendly-starburst-6e15fd
 - **React:** A JavaScript library for building user interfaces.
 - **Tailwind CSS:** A utility-first CSS framework for quickly styling your applications.
 - **Netlify:** A platform for continuous deployment and hosting.
-- **Vitest:** A fast and minimal JavaScript test runner for Vite.
 
 ## Contributing
 
 Contributions are welcome! If you have any ideas for improvement, open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License.
